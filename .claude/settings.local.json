@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:argenit.com)",
+      "WebFetch(domain:virasoft.com)",
+      "WebFetch(domain:spectral-imaging.com)"
+    ]
+  }
+}
