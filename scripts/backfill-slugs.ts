@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const trMap: Record<string, string> = {
   ç: "c", Ç: "c", ğ: "g", Ğ: "g", ı: "i", İ: "i",
