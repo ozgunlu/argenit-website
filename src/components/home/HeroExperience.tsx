@@ -41,7 +41,7 @@ export default function HeroExperience() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[size:32px_32px]" />
 
       {/* ── Lines with labels at top — starts at 150px ── */}
-      <div className="absolute top-[120px] left-0 right-0 bottom-0 flex justify-center gap-[2px] sm:gap-1 pointer-events-none">
+      <div className="absolute top-[80px] left-0 right-0 bottom-0 flex justify-center gap-[2px] sm:gap-1 pointer-events-none">
         {slides.map((slide, i) => (
           <div key={i} className="flex flex-col items-center flex-1">
             <span className="font-[family-name:var(--font-heading)] text-[10px] sm:text-xs font-semibold text-slate-300 uppercase tracking-[0.15em] mb-2 shrink-0">

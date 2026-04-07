@@ -26,10 +26,10 @@ export async function generateMetadata({
   };
   return {
     title: {
-      default: titles[locale] || titles.tr,
+      default: titles[locale] || titles.en,
       template: `%s | Argenit`,
     },
-    description: descriptions[locale] || descriptions.tr,
+    description: descriptions[locale] || descriptions.en,
     robots: { index: false, follow: false },
   };
 }
@@ -43,7 +43,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as "tr" | "en")) {
+  if (!routing.locales.includes(locale as "en" | "tr")) {
     notFound();
   }
 
