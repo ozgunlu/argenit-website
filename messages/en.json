@@ -45,7 +45,17 @@
     "manifestoAccent1": "accurate diagnosis",
     "manifestoLine2": "in every laboratory,",
     "manifestoAccent2": "reliable results.",
-    "manifestoDesc": "Our AI-powered imaging systems accelerate diagnostic processes for cytogenetics and pathology specialists worldwide."
+    "manifestoDesc": "Our AI-powered imaging systems accelerate diagnostic processes for cytogenetics and pathology specialists worldwide.",
+    "showcaseTitle1": "What We Do",
+    "showcaseTitle2": "Our Core Platforms",
+    "showcase1Title": "AI-Driven Metaphase Finders & Karyotyping Systems",
+    "showcase1Desc": "Automated metaphase scanning and digital karyotyping for high-throughput cytogenetics laboratories.",
+    "showcase2Title": "Automated FISH Analysis & AI-Powered Spot Scoring",
+    "showcase2Desc": "Intelligent fluorescence probe detection, signal counting, and ratio calculation with AI precision.",
+    "showcase3Title": "EasyPath IMS — Digital Pathology with AI-Enhanced Analysis",
+    "showcase3Desc": "High-resolution whole-slide imaging servers with integrated AI tools for faster, more accurate diagnosis.",
+    "showcase4Title": "LIS for Unified Pathology Workflow",
+    "showcase4Desc": "A laboratory information system purpose-built to unify cytogenetics, FISH, and pathology under one seamless workflow."
   },
   "about": {
     "title": "About Us",

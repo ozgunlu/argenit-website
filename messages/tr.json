@@ -45,7 +45,17 @@
     "manifestoAccent1": "doğru teşhis",
     "manifestoLine2": "her laboratuvarda",
     "manifestoAccent2": "güvenilir sonuç.",
-    "manifestoDesc": "Yapay zeka destekli görüntüleme sistemlerimiz, dünya genelinde sitogenetik ve patoloji uzmanlarının tanı süreçlerini hızlandırır."
+    "manifestoDesc": "Yapay zeka destekli görüntüleme sistemlerimiz, dünya genelinde sitogenetik ve patoloji uzmanlarının tanı süreçlerini hızlandırır.",
+    "showcaseTitle1": "Ne Yapıyoruz",
+    "showcaseTitle2": "Temel Platformlarımız",
+    "showcase1Title": "Yapay Zeka Destekli Metafaz Tarama ve Karyotipleme Sistemleri",
+    "showcase1Desc": "Yüksek verimli sitogenetik laboratuvarları için otomatik metafaz tarama ve dijital karyotipleme.",
+    "showcase2Title": "Otomatik FISH Analizi ve Yapay Zeka ile Sinyal Skorlama",
+    "showcase2Desc": "Yapay zeka hassasiyetiyle akıllı floresan prob tespiti, sinyal sayımı ve oran hesaplama.",
+    "showcase3Title": "EasyPath IMS — Yapay Zeka Destekli Dijital Patoloji",
+    "showcase3Desc": "Daha hızlı ve doğru tanı için entegre yapay zeka araçlarıyla yüksek çözünürlüklü dijital slayt görüntüleme sunucuları.",
+    "showcase4Title": "Birleşik Patoloji İş Akışı için LIS",
+    "showcase4Desc": "Sitogenetik, FISH ve patolojiyi tek bir kesintisiz iş akışında birleştirmek için özel olarak tasarlanmış laboratuvar bilgi sistemi."
   },
   "about": {
     "title": "Hakkımızda",
