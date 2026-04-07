@@ -47,14 +47,13 @@ export default async function HomePage() {
 
       {/* ══════════ TRANSITION STRIP ══════════ */}
       <section className="py-14 lg:py-16 bg-[#f1f1f1]">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
-          <div className="hidden sm:block w-12 h-px bg-slate-300 shrink-0" />
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 flex flex-col items-center gap-4">
           <ScrollReveal>
-            <p className="font-[family-name:var(--font-heading)] text-xs sm:text-sm uppercase tracking-[0.2em] text-slate-400 font-semibold text-center sm:text-left">
-              {t("home.transitionStrip")}
+            <p className="font-[family-name:var(--font-heading)] text-xs sm:text-sm uppercase tracking-[0.2em] text-slate-400 font-semibold text-center">
+              {t("home.transitionStrip1")}<br />
+              {t("home.transitionStrip2")}
             </p>
           </ScrollReveal>
-          <div className="hidden sm:block w-12 h-px bg-slate-300 shrink-0" />
         </div>
       </section>
 

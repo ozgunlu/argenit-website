@@ -14,9 +14,9 @@
     "backToHome": "Back to Home"
   },
   "home": {
-    "heroTitle": "The Fastest Path to",
-    "heroTitleAccent": "Accurate Diagnosis",
-    "heroSubtitle": "ARGENIT aims to help physicians make the best diagnosis as quickly as possible with advanced biomedical imaging systems. We offer AI-powered solutions in cytogenetics and pathology.",
+    "heroTitle": "Fastest Path to",
+    "heroTitleAccent": "AI-Driven Diagnosis",
+    "heroSubtitle": "ARGENIT aims to help physicians make the best diagnosis as quickly as possible with advanced biomedical imaging systems. We offer AI-powered digital platforms for pathology and cytogenetics laboratories.",
     "heroButton": "Explore Our Products",
     "heroLabel1": "Cytogenetics",
     "heroLabel2": "Digital Pathology",
@@ -37,7 +37,8 @@
     "ctaTitle": "Get in Touch for Your Projects",
     "ctaSubtitle": "Contact our expert team for your needs in cytogenetics and digital pathology.",
     "ctaButton": "Contact Us",
-    "transitionStrip": "Over 20 years of experience — Your trusted partner in biomedical imaging with more than 100 institutional references",
+    "transitionStrip1": "20+ years of expertise.",
+    "transitionStrip2": "Trusted by 100+ institutions in biomedical imaging.",
     "sliderTitle1": "Complete Solutions in",
     "sliderTitle2": "Cytogenetics & Pathology",
     "manifestoLine1": "In every cell,",

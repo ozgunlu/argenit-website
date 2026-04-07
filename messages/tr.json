@@ -14,9 +14,9 @@
     "backToHome": "Ana Sayfaya Dön"
   },
   "home": {
-    "heroTitle": "Doğru Tanıya",
-    "heroTitleAccent": "En Hızlı Ulaştıran Teknolojiler",
-    "heroSubtitle": "ARGENIT, gelişmiş biyomedikal görüntüleme sistemleri ile hekimlerin en iyi tanıyı en hızlı koymasına yardımcı olmayı hedefler. Sitogenetik ve patoloji alanlarında yapay zeka destekli çözümler sunar.",
+    "heroTitle": "Yapay Zeka ile",
+    "heroTitleAccent": "Tanıda En Hızlı Yol",
+    "heroSubtitle": "ARGENIT, gelişmiş biyomedikal görüntüleme sistemleri ile hekimlerin en iyi tanıyı en hızlı koymasına yardımcı olmayı hedefler. Patoloji ve sitogenetik laboratuvarları için yapay zeka destekli dijital platformlar sunar.",
     "heroButton": "Ürünlerimizi Keşfedin",
     "heroLabel1": "Sitogenetik",
     "heroLabel2": "Dijital Patoloji",
@@ -37,7 +37,8 @@
     "ctaTitle": "Projeleriniz İçin Bize Ulaşın",
     "ctaSubtitle": "Sitogenetik ve dijital patoloji alanındaki ihtiyaçlarınız için uzman ekibimizle iletişime geçin.",
     "ctaButton": "İletişime Geçin",
-    "transitionStrip": "20 yılı aşkın deneyim — 100'den fazla kurumsal referans ile biyomedikal görüntülemede güvenilir çözüm ortağınız",
+    "transitionStrip1": "20+ yıllık uzmanlık.",
+    "transitionStrip2": "Biyomedikal görüntülemede 100+ kurumun güvenilir çözüm ortağı.",
     "sliderTitle1": "Sitogenetik ve Patolojide",
     "sliderTitle2": "Tam Çözümler",
     "manifestoLine1": "Her hücrede",
