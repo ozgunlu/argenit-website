@@ -193,7 +193,7 @@ export default function ApplicationsSlider({ slides }: Props) {
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[size:40px_40px]" />
 
-      <div className="relative mx-auto px-5 sm:px-8">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section headline — matching sample.html .middle_headline + .h2.spec.sided */}
         <div className="text-center mx-auto mb-[42px]">
           <h2 className="font-[family-name:var(--font-heading)] text-[2.5em] sm:text-[3.5em] lg:text-[3.9em] font-bold leading-[1] tracking-tight text-slate-900">

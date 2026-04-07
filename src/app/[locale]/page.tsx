@@ -3,6 +3,11 @@ import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import HeroExperience from "@/components/home/HeroExperience";
 import ApplicationsSlider, { type SlideData } from "@/components/home/ApplicationsSlider";
+import ProductShowcase from "@/components/home/ProductShowcase";
+import ProductShowcaseV2 from "@/components/home/ProductShowcaseV2";
+import ProductShowcaseV3 from "@/components/home/ProductShowcaseV3";
+import ProductShowcaseV4 from "@/components/home/ProductShowcaseV4";
+import ProductShowcaseV5 from "@/components/home/ProductShowcaseV5";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import MagneticButton from "@/components/home/MagneticButton";
 import ServicesGallery from "@/components/home/ServicesGallery";
@@ -56,6 +61,21 @@ export default async function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ══════════ PRODUCT SHOWCASE — V1: Dark rows ══════════ */}
+      <ProductShowcase />
+
+      {/* ══════════ PRODUCT SHOWCASE — V2: Bento Grid ══════════ */}
+      <ProductShowcaseV2 />
+
+      {/* ══════════ PRODUCT SHOWCASE — V3: Editorial alternating ══════════ */}
+      <ProductShowcaseV3 />
+
+      {/* ══════════ PRODUCT SHOWCASE — V4: Horizontal scroll cards ══════════ */}
+      <ProductShowcaseV4 />
+
+      {/* ══════════ PRODUCT SHOWCASE — V5: WebGL Particle Field ══════════ */}
+      <ProductShowcaseV5 />
 
       {/* ══════════ CORE AREAS — Applications Slider ══════════ */}
       <ApplicationsSlider slides={homeSlides} />
