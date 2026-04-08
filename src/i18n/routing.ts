@@ -25,6 +25,22 @@ export const routing = defineRouting({
     "/about/privacy": "/about/privacy",
     "/about/kvkk-form": "/about/kvkk-form",
     "/about/info-security": "/about/info-security",
+    "/solutions/akas": {
+      tr: "/cozumler/akas",
+      en: "/solutions/akas",
+    },
+    "/solutions/easyfish": {
+      tr: "/cozumler/easyfish",
+      en: "/solutions/easyfish",
+    },
+    "/solutions/easypath": {
+      tr: "/cozumler/easypath",
+      en: "/solutions/easypath",
+    },
+    "/solutions/lis": {
+      tr: "/cozumler/lis",
+      en: "/solutions/lis",
+    },
     "/contact": "/contact",
   },
 });

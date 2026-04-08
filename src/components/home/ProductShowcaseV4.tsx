@@ -1,7 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { useRef, useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 /**
  * V4 — Horizontal scroll cards (full-width)
@@ -10,10 +12,10 @@ import { useRef, useEffect, useState } from "react";
  */
 
 const panels = [
-  { titleKey: "home.showcase1Title", descKey: "home.showcase1Desc", num: "01", accentFrom: "from-blue-500", accentTo: "to-blue-600" },
-  { titleKey: "home.showcase2Title", descKey: "home.showcase2Desc", num: "02", accentFrom: "from-cyan-500", accentTo: "to-teal-500" },
-  { titleKey: "home.showcase3Title", descKey: "home.showcase3Desc", num: "03", accentFrom: "from-indigo-500", accentTo: "to-blue-500" },
-  { titleKey: "home.showcase4Title", descKey: "home.showcase4Desc", num: "04", accentFrom: "from-slate-400", accentTo: "to-slate-500" },
+  { titleKey: "home.showcase1Title", descKey: "home.showcase1Desc", num: "01", accentFrom: "from-blue-500", accentTo: "to-blue-600", href: "/solutions/akas" as const },
+  { titleKey: "home.showcase2Title", descKey: "home.showcase2Desc", num: "02", accentFrom: "from-cyan-500", accentTo: "to-teal-500", href: "/solutions/easyfish" as const },
+  { titleKey: "home.showcase3Title", descKey: "home.showcase3Desc", num: "03", accentFrom: "from-indigo-500", accentTo: "to-blue-500", href: "/solutions/easypath" as const },
+  { titleKey: "home.showcase4Title", descKey: "home.showcase4Desc", num: "04", accentFrom: "from-slate-400", accentTo: "to-slate-500", href: "/solutions/lis" as const },
 ];
 
 export default function ProductShowcaseV4() {
@@ -67,8 +69,9 @@ export default function ProductShowcaseV4() {
         style={{ scrollbarWidth: "none" }}
       >
         {panels.map((panel, i) => (
-          <div
+          <Link
             key={i}
+            href={panel.href}
             className="group snap-start shrink-0 w-[85vw] sm:w-[60vw] lg:w-[380px] transition-all duration-700"
             style={{
               opacity: visible ? 1 : 0,
@@ -92,12 +95,18 @@ export default function ProductShowcaseV4() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-white/30 group-hover:text-white/50 leading-relaxed transition-colors duration-500">
+                <p className="text-sm text-white/30 group-hover:text-white/50 leading-relaxed transition-colors duration-500 mb-6">
                   {t(panel.descKey)}
                 </p>
+
+                {/* Arrow */}
+                <div className="flex items-center gap-2 text-xs font-semibold text-white/20 group-hover:text-cyan-400/70 transition-colors duration-500">
+                  <span>{t("common.learnMore")}</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
         {/* Spacer for scroll end */}
         <div className="shrink-0 w-5 sm:w-8 lg:w-1" />
