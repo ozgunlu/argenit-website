@@ -12,6 +12,9 @@ import {
   GripVertical,
   ImageIcon,
   Star,
+  X,
+  Search,
+  Link2,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -48,6 +51,13 @@ interface CatalogData {
   fileSize: string;
   order: number;
   file?: File;
+}
+
+interface RelatedProductItem {
+  id: string;
+  name: string;
+  categoryName?: string;
+  imageUrl?: string;
 }
 
 interface Category {
@@ -98,11 +108,33 @@ export default function ProductForm({ productId }: Props) {
   // Catalogs
   const [catalogs, setCatalogs] = useState<CatalogData[]>([]);
 
+  // Related Products
+  const [relatedProducts, setRelatedProducts] = useState<RelatedProductItem[]>([]);
+  const [allProducts, setAllProducts] = useState<RelatedProductItem[]>([]);
+  const [relatedSearch, setRelatedSearch] = useState("");
+
   // Load categories
   useEffect(() => {
     fetch("/api/admin/product-categories")
       .then((r) => r.json())
       .then(setCategories)
+      .catch(() => {});
+  }, []);
+
+  // Load all products for related products picker
+  useEffect(() => {
+    fetch("/api/admin/products")
+      .then((r) => r.json())
+      .then((products: { id: string; translations: { locale: string; name: string }[]; category?: { translations: { locale: string; name: string }[] } | null; images?: { url: string; isMain: boolean }[] }[]) => {
+        setAllProducts(
+          products.map((p) => ({
+            id: p.id,
+            name: p.translations.find((t) => t.locale === "tr")?.name || p.translations[0]?.name || "",
+            categoryName: p.category?.translations.find((t) => t.locale === "tr")?.name,
+            imageUrl: p.images?.find((img) => img.isMain)?.url || p.images?.[0]?.url,
+          }))
+        );
+      })
       .catch(() => {});
   }, []);
 
@@ -184,6 +216,19 @@ export default function ProductForm({ productId }: Props) {
           );
         }
 
+        if (p.relatedProducts?.length) {
+          setRelatedProducts(
+            p.relatedProducts.map(
+              (rp: { related: { id: string; translations: { locale: string; name: string }[]; category?: { translations: { locale: string; name: string }[] } | null; images?: { url: string; isMain: boolean }[] } }) => ({
+                id: rp.related.id,
+                name: rp.related.translations.find((t) => t.locale === "tr")?.name || rp.related.translations[0]?.name || "",
+                categoryName: rp.related.category?.translations.find((t) => t.locale === "tr")?.name,
+                imageUrl: rp.related.images?.find((img) => img.isMain)?.url || rp.related.images?.[0]?.url,
+              })
+            )
+          );
+        }
+
         setInitialLoading(false);
       });
   }, [productId]);
@@ -241,6 +286,7 @@ export default function ProductForm({ productId }: Props) {
         models,
         images: processedImages,
         catalogs: processedCatalogs,
+        relatedProductIds: relatedProducts.map((rp) => rp.id),
       };
 
       const url = productId
@@ -753,6 +799,113 @@ export default function ProductForm({ productId }: Props) {
                       />
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* ── Related Products ── */}
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <Link2 size={18} className="text-gray-400" />
+              <h2 className="text-lg font-semibold text-gray-900">Iliskili Urunler</h2>
+            </div>
+            <span className="text-xs text-gray-400">{relatedProducts.length} urun secildi</span>
+          </div>
+
+          {/* Search & Add */}
+          <div className="relative mb-4">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Urun ara..."
+              value={relatedSearch}
+              onChange={(e) => setRelatedSearch(e.target.value)}
+              className={inputClass + " pl-9"}
+            />
+          </div>
+
+          {relatedSearch && (
+            <div className="border border-gray-200 rounded-lg mb-4 max-h-48 overflow-y-auto">
+              {allProducts
+                .filter(
+                  (p) =>
+                    p.id !== productId &&
+                    !relatedProducts.some((rp) => rp.id === p.id) &&
+                    p.name.toLowerCase().includes(relatedSearch.toLowerCase())
+                )
+                .map((p) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => {
+                      setRelatedProducts([...relatedProducts, p]);
+                      setRelatedSearch("");
+                    }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
+                  >
+                    {p.imageUrl ? (
+                      <img src={p.imageUrl} alt="" className="w-8 h-8 rounded object-cover" />
+                    ) : (
+                      <div className="w-8 h-8 rounded bg-gray-100 flex items-center justify-center">
+                        <ImageIcon size={14} className="text-gray-300" />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
+                      {p.categoryName && (
+                        <p className="text-xs text-gray-400">{p.categoryName}</p>
+                      )}
+                    </div>
+                    <Plus size={16} className="text-primary shrink-0" />
+                  </button>
+                ))}
+              {allProducts.filter(
+                (p) =>
+                  p.id !== productId &&
+                  !relatedProducts.some((rp) => rp.id === p.id) &&
+                  p.name.toLowerCase().includes(relatedSearch.toLowerCase())
+              ).length === 0 && (
+                <p className="text-sm text-gray-400 text-center py-3">Sonuc bulunamadi</p>
+              )}
+            </div>
+          )}
+
+          {/* Selected related products */}
+          {relatedProducts.length === 0 ? (
+            <p className="text-sm text-gray-400 text-center py-6">
+              Henuz iliskili urun eklenmemis. Yukaridaki arama kutusundan urun ekleyebilirsiniz.
+            </p>
+          ) : (
+            <div className="space-y-2">
+              {relatedProducts.map((rp, i) => (
+                <div
+                  key={rp.id}
+                  className="flex items-center gap-3 px-3 py-2.5 border border-gray-200 rounded-lg"
+                >
+                  <GripVertical size={16} className="text-gray-300 shrink-0" />
+                  {rp.imageUrl ? (
+                    <img src={rp.imageUrl} alt="" className="w-8 h-8 rounded object-cover" />
+                  ) : (
+                    <div className="w-8 h-8 rounded bg-gray-100 flex items-center justify-center">
+                      <ImageIcon size={14} className="text-gray-300" />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900 truncate">{rp.name}</p>
+                    {rp.categoryName && (
+                      <p className="text-xs text-gray-400">{rp.categoryName}</p>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setRelatedProducts(relatedProducts.filter((_, idx) => idx !== i))}
+                    className="text-red-400 hover:text-red-600 shrink-0"
+                  >
+                    <X size={16} />
+                  </button>
                 </div>
               ))}
             </div>

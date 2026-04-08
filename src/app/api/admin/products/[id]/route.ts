@@ -20,6 +20,10 @@ export async function GET(
       images: { orderBy: { order: "asc" } },
       models: { include: { translations: true }, orderBy: { order: "asc" } },
       catalogs: { orderBy: { order: "asc" } },
+      relatedProducts: {
+        include: { related: { include: { translations: true, images: { where: { isMain: true }, take: 1 } } } },
+        orderBy: { order: "asc" },
+      },
     },
   });
 
@@ -36,7 +40,7 @@ export async function PUT(
 
   const { id } = await params;
   const body = await req.json();
-  const { categoryId, order, isActive, showOnHome, homeImage, translations, models, images, catalogs } = body;
+  const { categoryId, order, isActive, showOnHome, homeImage, translations, models, images, catalogs, relatedProductIds } = body;
 
   // Auto-generate slug from Turkish name
   const trName = (translations.tr as { name: string }).name;
@@ -131,6 +135,20 @@ export async function PUT(
     }
   }
 
+  // Replace related products
+  if (relatedProductIds) {
+    await prisma.relatedProduct.deleteMany({ where: { productId: id } });
+    if (relatedProductIds.length > 0) {
+      await prisma.relatedProduct.createMany({
+        data: relatedProductIds.map((relatedId: string, index: number) => ({
+          productId: id,
+          relatedId,
+          order: index,
+        })),
+      });
+    }
+  }
+
   const updated = await prisma.product.findUnique({
     where: { id },
     include: {
@@ -138,6 +156,10 @@ export async function PUT(
       images: { orderBy: { order: "asc" } },
       models: { include: { translations: true }, orderBy: { order: "asc" } },
       catalogs: { orderBy: { order: "asc" } },
+      relatedProducts: {
+        include: { related: { include: { translations: true } } },
+        orderBy: { order: "asc" },
+      },
     },
   });
 

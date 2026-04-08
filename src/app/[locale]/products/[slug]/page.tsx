@@ -91,9 +91,29 @@ export default async function ProductDetailPage({
     return { name: mt?.name || "", description: mt?.description || "" };
   });
 
-  // Related products from same category
+  // Related products from explicit relation, fallback to same category
   let relatedProducts: { slug: string; name: string; description: string }[] = [];
-  if (product.categoryId) {
+  const explicitRelated = await prisma.relatedProduct.findMany({
+    where: { productId: product.id },
+    include: {
+      related: {
+        include: {
+          translations: { where: { locale } },
+        },
+      },
+    },
+    orderBy: { order: "asc" },
+  });
+
+  if (explicitRelated.length > 0) {
+    relatedProducts = explicitRelated
+      .filter((rp) => rp.related.isActive)
+      .map((rp) => ({
+        slug: rp.related.translations[0]?.slug || rp.related.slug,
+        name: rp.related.translations[0]?.name || rp.related.slug,
+        description: rp.related.translations[0]?.shortDescription || rp.related.translations[0]?.description || "",
+      }));
+  } else if (product.categoryId) {
     const related = await prisma.product.findMany({
       where: {
         categoryId: product.categoryId,

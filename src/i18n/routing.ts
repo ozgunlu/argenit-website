@@ -37,9 +37,9 @@ export const routing = defineRouting({
       tr: "/cozumler/easypath",
       en: "/solutions/easypath",
     },
-    "/solutions/lis": {
-      tr: "/cozumler/lis",
-      en: "/solutions/lis",
+    "/solutions/pathica": {
+      tr: "/cozumler/pathica",
+      en: "/solutions/pathica",
     },
     "/contact": "/contact",
   },

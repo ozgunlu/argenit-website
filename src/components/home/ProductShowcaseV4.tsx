@@ -15,7 +15,7 @@ const panels = [
   { titleKey: "home.showcase1Title", descKey: "home.showcase1Desc", num: "01", accentFrom: "from-blue-500", accentTo: "to-blue-600", href: "/solutions/akas" as const },
   { titleKey: "home.showcase2Title", descKey: "home.showcase2Desc", num: "02", accentFrom: "from-cyan-500", accentTo: "to-teal-500", href: "/solutions/easyfish" as const },
   { titleKey: "home.showcase3Title", descKey: "home.showcase3Desc", num: "03", accentFrom: "from-indigo-500", accentTo: "to-blue-500", href: "/solutions/easypath" as const },
-  { titleKey: "home.showcase4Title", descKey: "home.showcase4Desc", num: "04", accentFrom: "from-slate-400", accentTo: "to-slate-500", href: "/solutions/lis" as const },
+  { titleKey: "home.showcase4Title", descKey: "home.showcase4Desc", num: "04", accentFrom: "from-slate-400", accentTo: "to-slate-500", href: "/solutions/pathica" as const },
 ];
 
 export default function ProductShowcaseV4() {

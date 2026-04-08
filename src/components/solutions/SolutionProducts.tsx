@@ -4,7 +4,8 @@ import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 
 interface SolutionProductsProps {
-  categorySlugs: string[];
+  categorySlugs?: string[];
+  productSlugs?: string[];
   accentColor?: "blue" | "emerald" | "purple" | "amber";
 }
 
@@ -57,6 +58,7 @@ const colorMap = {
 
 export default async function SolutionProducts({
   categorySlugs,
+  productSlugs,
   accentColor = "blue",
 }: SolutionProductsProps) {
   const locale = await getLocale();
@@ -64,10 +66,11 @@ export default async function SolutionProducts({
   const c = colorMap[accentColor];
 
   const products = await prisma.product.findMany({
-    where: {
-      isActive: true,
-      category: { slug: { in: categorySlugs } },
-    },
+    where: productSlugs
+      ? { isActive: true, slug: { in: productSlugs } }
+      : categorySlugs
+        ? { isActive: true, category: { slug: { in: categorySlugs } } }
+        : { isActive: true },
     include: {
       translations: { where: { locale } },
       images: { where: { isMain: true }, take: 1 },

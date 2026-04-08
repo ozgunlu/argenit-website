@@ -13,22 +13,22 @@ interface SlideItem {
 const slides: SlideItem[] = [
   {
     labelKey: "home.heroLabel1",
-    video: "/cytogenetics.mp4",
+    video: "/videos/cytogenetics.mp4",
     height: "h-[320px] sm:h-[400px] lg:h-[46vh]",
   },
   {
     labelKey: "home.heroLabel2",
-    video: "/digital-pathology.mp4",
+    video: "/videos/digital-pathology.mp4",
     height: "h-[270px] sm:h-[340px] lg:h-[38vh]",
   },
   {
     labelKey: "home.heroLabel3",
-    video: "/fish.mp4",
+    video: "/videos/fish.mp4",
     height: "h-[370px] sm:h-[460px] lg:h-[54vh]",
   },
   {
     labelKey: "home.heroLabel4",
-    video: "/karyotyping.mp4",
+    video: "/videos/karyotyping.mp4",
     height: "h-[420px] sm:h-[520px] lg:h-[62vh]",
   },
 ];

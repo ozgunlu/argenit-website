@@ -42,22 +42,39 @@ model ProductCategoryTranslation {
 }
 
 model Product {
-  id           String               @id @default(cuid()) @db.VarChar(30)
-  slug         String               @unique @db.VarChar(191)
-  categoryId   String?              @db.VarChar(30)
-  isActive     Boolean              @default(true)
-  showOnHome   Boolean              @default(false)
-  homeImage    String?              @db.VarChar(500)
-  order        Int                  @default(0)
-  createdAt    DateTime             @default(now())
-  updatedAt    DateTime             @updatedAt
-  category     ProductCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  translations ProductTranslation[]
-  models       ProductModel[]
-  images       ProductImage[]
-  catalogs     ProductCatalog[]
+  id              String               @id @default(cuid()) @db.VarChar(30)
+  slug            String               @unique @db.VarChar(191)
+  categoryId      String?              @db.VarChar(30)
+  isActive        Boolean              @default(true)
+  showOnHome      Boolean              @default(false)
+  homeImage       String?              @db.VarChar(500)
+  solutions       String               @default("") @db.VarChar(255)
+  order           Int                  @default(0)
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+  category        ProductCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  translations    ProductTranslation[]
+  models          ProductModel[]
+  images          ProductImage[]
+  catalogs        ProductCatalog[]
+  relatedProducts RelatedProduct[]     @relation("ProductRelated")
+  relatedBy       RelatedProduct[]     @relation("RelatedToProduct")
 
   @@index([categoryId])
+}
+
+model RelatedProduct {
+  id        String @id @default(cuid()) @db.VarChar(30)
+  productId String @db.VarChar(30)
+  relatedId String @db.VarChar(30)
+  order     Int    @default(0)
+
+  product Product @relation("ProductRelated", fields: [productId], references: [id], onDelete: Cascade)
+  related Product @relation("RelatedToProduct", fields: [relatedId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, relatedId])
+  @@index([productId])
+  @@index([relatedId])
 }
 
 model ProductTranslation {

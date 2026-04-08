@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await req.json();
-  const { categoryId, order, isActive, showOnHome, homeImage, translations, models, images, catalogs } = body;
+  const { categoryId, order, isActive, showOnHome, homeImage, translations, models, images, catalogs, relatedProductIds } = body;
 
   // Auto-generate slug from Turkish name
   const trName = (translations.tr as { name: string }).name;
@@ -107,6 +107,17 @@ export async function POST(req: NextRequest) {
         },
       });
     }
+  }
+
+  // Create related products
+  if (relatedProductIds?.length) {
+    await prisma.relatedProduct.createMany({
+      data: relatedProductIds.map((relatedId: string, index: number) => ({
+        productId: product.id,
+        relatedId,
+        order: index,
+      })),
+    });
   }
 
   return NextResponse.json(product);
