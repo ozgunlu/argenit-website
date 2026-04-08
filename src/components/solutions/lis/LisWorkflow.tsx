@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ClipboardList, GitBranch, Combine, Send } from "lucide-react";
+import { ScanBarcode, FlaskConical, Eye, FileSignature } from "lucide-react";
 
 export default function LisWorkflow() {
   const t = useTranslations();
@@ -44,7 +44,7 @@ export default function LisWorkflow() {
 
   const steps = [
     {
-      icon: ClipboardList,
+      icon: ScanBarcode,
       num: "01",
       title: t("lis.workflowStep1Title"),
       desc: t("lis.workflowStep1Desc"),
@@ -117,7 +117,7 @@ export default function LisWorkflow() {
       ),
     },
     {
-      icon: GitBranch,
+      icon: FlaskConical,
       num: "02",
       title: t("lis.workflowStep2Title"),
       desc: t("lis.workflowStep2Desc"),
@@ -214,7 +214,7 @@ export default function LisWorkflow() {
       ),
     },
     {
-      icon: Combine,
+      icon: Eye,
       num: "03",
       title: t("lis.workflowStep3Title"),
       desc: t("lis.workflowStep3Desc"),
@@ -253,7 +253,7 @@ export default function LisWorkflow() {
               className="w-16 h-16 rounded-full border-2 border-amber-400/30 bg-amber-500/10 flex items-center justify-center"
               style={{ animation: "lisCentralPulse 2s ease-in-out infinite" }}
             >
-              <Combine size={20} className="text-amber-400" />
+              <Eye size={20} className="text-amber-400" />
             </div>
             {/* Orbiting ring */}
             <div
@@ -308,7 +308,7 @@ export default function LisWorkflow() {
       ),
     },
     {
-      icon: Send,
+      icon: FileSignature,
       num: "04",
       title: t("lis.workflowStep4Title"),
       desc: t("lis.workflowStep4Desc"),
@@ -322,7 +322,7 @@ export default function LisWorkflow() {
             {/* Central report */}
             <div className="flex items-center gap-2 mb-3">
               <div className="w-6 h-6 rounded bg-amber-500/20 flex items-center justify-center">
-                <Send size={12} className="text-amber-400" />
+                <FileSignature size={12} className="text-amber-400" />
               </div>
               <div>
                 <div className="h-2 w-24 rounded bg-white/10" />

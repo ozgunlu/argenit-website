@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useRef, useState, useEffect } from "react";
-import { Network, Shield, Zap } from "lucide-react";
+import { Route, ShieldCheck, BarChart3 } from "lucide-react";
 
 export default function LisOverview() {
   const t = useTranslations();
@@ -27,19 +27,19 @@ export default function LisOverview() {
 
   const highlights = [
     {
-      icon: Network,
+      icon: Route,
       title: t("lis.overviewHighlight1"),
       desc: t("lis.overviewHighlight1Desc"),
       gradient: "from-amber-500 to-amber-600",
     },
     {
-      icon: Shield,
+      icon: ShieldCheck,
       title: t("lis.overviewHighlight2"),
       desc: t("lis.overviewHighlight2Desc"),
       gradient: "from-orange-500 to-red-500",
     },
     {
-      icon: Zap,
+      icon: BarChart3,
       title: t("lis.overviewHighlight3"),
       desc: t("lis.overviewHighlight3Desc"),
       gradient: "from-yellow-500 to-amber-500",

@@ -3,12 +3,12 @@
 import { useTranslations } from "next-intl";
 import { useRef, useState, useEffect } from "react";
 import {
-  Server,
-  RefreshCw,
+  ScanBarcode,
+  Route,
   BarChart3,
-  Users,
-  FileText,
-  Globe,
+  Plug,
+  FileSignature,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function LisFeatures() {
@@ -34,12 +34,12 @@ export default function LisFeatures() {
 
   const features = [
     {
-      icon: Server,
+      icon: ScanBarcode,
       title: t("lis.feature1Title"),
       desc: t("lis.feature1Desc"),
     },
     {
-      icon: RefreshCw,
+      icon: Route,
       title: t("lis.feature2Title"),
       desc: t("lis.feature2Desc"),
     },
@@ -49,17 +49,17 @@ export default function LisFeatures() {
       desc: t("lis.feature3Desc"),
     },
     {
-      icon: Users,
+      icon: Plug,
       title: t("lis.feature4Title"),
       desc: t("lis.feature4Desc"),
     },
     {
-      icon: FileText,
+      icon: FileSignature,
       title: t("lis.feature5Title"),
       desc: t("lis.feature5Desc"),
     },
     {
-      icon: Globe,
+      icon: ShieldCheck,
       title: t("lis.feature6Title"),
       desc: t("lis.feature6Desc"),
     },
