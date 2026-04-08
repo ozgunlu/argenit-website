@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ScanSearch, Brain, Ruler, FileCheck } from "lucide-react";
+import { ScanSearch, Brain, Columns3, FileCheck } from "lucide-react";
 
 export default function EasyPathWorkflow() {
   const t = useTranslations();
@@ -100,10 +100,10 @@ export default function EasyPathWorkflow() {
           <div className="absolute top-[10%] left-[8%] w-[84%] h-[80%] rounded-lg bg-purple-900/10">
             {/* AI bounding boxes appearing */}
             {[
-              { top: "10%", left: "8%", w: "35%", h: "30%", label: "Tumor", confidence: "97.3%", delay: "0s" },
-              { top: "15%", left: "55%", w: "38%", h: "35%", label: "Stroma", confidence: "94.1%", delay: "0.5s" },
-              { top: "52%", left: "12%", w: "40%", h: "38%", label: "Necrosis", confidence: "91.8%", delay: "1s" },
-              { top: "58%", left: "58%", w: "32%", h: "30%", label: "Normal", confidence: "99.2%", delay: "1.5s" },
+              { top: "10%", left: "8%", w: "35%", h: "30%", label: "Ki-67", confidence: "32.4%", delay: "0s" },
+              { top: "15%", left: "55%", w: "38%", h: "35%", label: "TILs", confidence: "18.7%", delay: "0.5s" },
+              { top: "52%", left: "12%", w: "40%", h: "38%", label: "HER2", confidence: "2+", delay: "1s" },
+              { top: "58%", left: "58%", w: "32%", h: "30%", label: "PD-L1", confidence: "TPS 65%", delay: "1.5s" },
             ].map((box, i) => (
               <div
                 key={i}
@@ -139,69 +139,60 @@ export default function EasyPathWorkflow() {
       ),
     },
     {
-      icon: Ruler,
+      icon: Columns3,
       num: "03",
       title: t("easypath.workflowStep3Title"),
       desc: t("easypath.workflowStep3Desc"),
       color: "fuchsia",
       visual: (
-        // Annotated pathology view with measurements
-        <div className="relative w-full h-full bg-[#0c0520] rounded-xl overflow-hidden p-6">
+        // Multi-viewer & overlay compare visualization
+        <div className="relative w-full h-full bg-[#0c0520] rounded-xl overflow-hidden p-4">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(217,70,239,0.06),transparent_70%)]" />
-          {/* Annotated tissue view */}
-          <div className="relative h-full flex items-center justify-center">
-            {/* Central tissue region */}
-            <div className="relative w-[70%] h-[70%] rounded-lg border border-fuchsia-500/15 bg-fuchsia-500/5">
-              {/* Annotation polygon (simulated with bordered shape) */}
+          {/* 2x2 Multi-viewer grid */}
+          <div className="relative h-[60%] grid grid-cols-2 gap-2 mb-3">
+            {["H&E", "Ki-67", "HER2", "PD-L1"].map((label, i) => (
               <div
-                className="absolute top-[15%] left-[20%] w-[55%] h-[50%] border-2 border-dashed border-fuchsia-400/50 rounded-lg"
-                style={{ animation: "fadeInUp 0.5s ease 0.2s both" }}
+                key={i}
+                className="relative rounded-lg border border-purple-500/15 bg-purple-900/10 overflow-hidden"
+                style={{ animation: `fadeInUp 0.4s ease ${i * 0.15}s both` }}
               >
-                <div className="absolute -top-5 left-0 px-1.5 py-0.5 rounded bg-fuchsia-500/20 text-[8px] font-mono text-fuchsia-300">
-                  Region of Interest
+                {/* Tissue pattern */}
+                <div className="absolute inset-0 opacity-30">
+                  <div className="absolute top-[20%] left-[15%] w-[50%] h-[40%] rounded-full" style={{ backgroundColor: i === 0 ? "rgba(168,85,247,0.3)" : i === 1 ? "rgba(251,191,36,0.3)" : i === 2 ? "rgba(239,68,68,0.3)" : "rgba(34,197,94,0.3)" }} />
+                  <div className="absolute top-[40%] left-[40%] w-[45%] h-[35%] rounded-full" style={{ backgroundColor: i === 0 ? "rgba(139,92,246,0.2)" : i === 1 ? "rgba(253,224,71,0.2)" : i === 2 ? "rgba(252,165,165,0.2)" : "rgba(134,239,172,0.2)" }} />
                 </div>
+                {/* Sync icon */}
+                <div className="absolute top-1 right-1 w-3 h-3 rounded-full bg-fuchsia-500/20 flex items-center justify-center">
+                  <div className="w-1 h-1 rounded-full bg-fuchsia-400" />
+                </div>
+                <div className="absolute bottom-1 left-1.5 px-1 py-0.5 rounded bg-black/40 text-[7px] font-mono text-white/50">{label}</div>
               </div>
-              {/* Measurement line horizontal */}
-              <div
-                className="absolute top-[72%] left-[15%] w-[65%] flex items-center"
-                style={{ animation: "fadeInUp 0.5s ease 0.6s both" }}
-              >
-                <div className="flex-1 h-[1px] bg-violet-400/60" />
-                <span className="px-2 text-[9px] font-mono text-violet-300 whitespace-nowrap">2.4 mm</span>
-                <div className="flex-1 h-[1px] bg-violet-400/60" />
-              </div>
-              {/* Measurement line vertical */}
-              <div
-                className="absolute top-[10%] left-[82%] h-[55%] flex flex-col items-center"
-                style={{ animation: "fadeInUp 0.5s ease 0.9s both" }}
-              >
-                <div className="flex-1 w-[1px] bg-violet-400/60" />
-                <span className="py-1 text-[9px] font-mono text-violet-300 whitespace-nowrap" style={{ writingMode: "vertical-rl" }}>1.8 mm</span>
-                <div className="flex-1 w-[1px] bg-violet-400/60" />
-              </div>
-              {/* Pin markers */}
-              {[
-                { top: "25%", left: "35%", color: "fuchsia" },
-                { top: "40%", left: "55%", color: "purple" },
-                { top: "50%", left: "30%", color: "violet" },
-              ].map((pin, i) => (
-                <div
-                  key={i}
-                  className="absolute w-2.5 h-2.5 rounded-full border-2"
-                  style={{
-                    top: pin.top,
-                    left: pin.left,
-                    borderColor: pin.color === "fuchsia" ? "rgba(217,70,239,0.7)" : pin.color === "purple" ? "rgba(168,85,247,0.7)" : "rgba(139,92,246,0.7)",
-                    backgroundColor: pin.color === "fuchsia" ? "rgba(217,70,239,0.3)" : pin.color === "purple" ? "rgba(168,85,247,0.3)" : "rgba(139,92,246,0.3)",
-                    animation: `fadeInUp 0.4s ease ${0.3 + i * 0.2}s both`,
-                  }}
-                />
+            ))}
+          </div>
+          {/* Overlay compare strip */}
+          <div className="relative h-[35%] rounded-lg border border-fuchsia-500/20 bg-fuchsia-900/10 overflow-hidden" style={{ animation: "fadeInUp 0.4s ease 0.6s both" }}>
+            {/* Curtain divider */}
+            <div className="absolute top-0 bottom-0 left-[55%] w-[2px] bg-fuchsia-400/60 z-10">
+              <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-fuchsia-500/40 border border-fuchsia-400/60" />
+            </div>
+            {/* Left slide */}
+            <div className="absolute inset-0 right-[45%] bg-purple-500/8">
+              <div className="absolute top-[20%] left-[10%] w-[60%] h-[50%] rounded-full bg-purple-400/15" />
+            </div>
+            {/* Right slide */}
+            <div className="absolute inset-0 left-[55%] bg-fuchsia-500/8">
+              <div className="absolute top-[20%] left-[10%] w-[60%] h-[50%] rounded-full bg-fuchsia-400/15" />
+            </div>
+            {/* Mode badges */}
+            <div className="absolute bottom-1.5 left-2 flex gap-1">
+              {["Curtain", "Blend", "Flash"].map((mode, i) => (
+                <span key={i} className={`text-[7px] font-mono px-1.5 py-0.5 rounded ${i === 0 ? "bg-fuchsia-500/20 text-fuchsia-300" : "bg-white/5 text-white/25"}`}>{mode}</span>
               ))}
             </div>
           </div>
-          {/* Tool indicator */}
+          {/* Mode indicator */}
           <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur border border-white/5">
-            <span className="text-[10px] font-mono text-fuchsia-400">Annotation Mode</span>
+            <span className="text-[10px] font-mono text-fuchsia-400">Multi-View</span>
           </div>
         </div>
       ),

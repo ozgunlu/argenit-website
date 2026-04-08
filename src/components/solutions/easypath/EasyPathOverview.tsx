@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useRef, useState, useEffect } from "react";
-import { Microscope, Sparkles, Database } from "lucide-react";
+import { ScanLine, BrainCircuit, Link2 } from "lucide-react";
 
 export default function EasyPathOverview() {
   const t = useTranslations();
@@ -22,19 +22,19 @@ export default function EasyPathOverview() {
 
   const highlights = [
     {
-      icon: Microscope,
+      icon: ScanLine,
       title: t("easypath.overviewHighlight1"),
       desc: t("easypath.overviewHighlight1Desc"),
       gradient: "from-purple-500 to-purple-600",
     },
     {
-      icon: Sparkles,
+      icon: BrainCircuit,
       title: t("easypath.overviewHighlight2"),
       desc: t("easypath.overviewHighlight2Desc"),
       gradient: "from-violet-500 to-fuchsia-500",
     },
     {
-      icon: Database,
+      icon: Link2,
       title: t("easypath.overviewHighlight3"),
       desc: t("easypath.overviewHighlight3Desc"),
       gradient: "from-fuchsia-500 to-pink-500",

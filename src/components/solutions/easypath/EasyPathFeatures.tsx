@@ -3,12 +3,12 @@
 import { useTranslations } from "next-intl";
 import { useRef, useState, useEffect } from "react";
 import {
-  Layers,
-  Palette,
-  Share2,
-  Cpu,
-  Cloud,
-  Lock,
+  LayoutGrid,
+  Blend,
+  BrainCircuit,
+  SlidersHorizontal,
+  MousePointer2,
+  ArrowRightLeft,
 } from "lucide-react";
 
 export default function EasyPathFeatures() {
@@ -28,12 +28,12 @@ export default function EasyPathFeatures() {
   }, []);
 
   const features = [
-    { icon: Layers,  title: t("easypath.feature1Title"), desc: t("easypath.feature1Desc") },
-    { icon: Palette, title: t("easypath.feature2Title"), desc: t("easypath.feature2Desc") },
-    { icon: Share2,  title: t("easypath.feature3Title"), desc: t("easypath.feature3Desc") },
-    { icon: Cpu,     title: t("easypath.feature4Title"), desc: t("easypath.feature4Desc") },
-    { icon: Cloud,   title: t("easypath.feature5Title"), desc: t("easypath.feature5Desc") },
-    { icon: Lock,    title: t("easypath.feature6Title"), desc: t("easypath.feature6Desc") },
+    { icon: LayoutGrid,        title: t("easypath.feature1Title"), desc: t("easypath.feature1Desc") },
+    { icon: Blend,             title: t("easypath.feature2Title"), desc: t("easypath.feature2Desc") },
+    { icon: BrainCircuit,      title: t("easypath.feature3Title"), desc: t("easypath.feature3Desc") },
+    { icon: SlidersHorizontal, title: t("easypath.feature4Title"), desc: t("easypath.feature4Desc") },
+    { icon: MousePointer2,     title: t("easypath.feature5Title"), desc: t("easypath.feature5Desc") },
+    { icon: ArrowRightLeft,    title: t("easypath.feature6Title"), desc: t("easypath.feature6Desc") },
   ];
 
   return (
