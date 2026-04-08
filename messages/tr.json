@@ -245,6 +245,10 @@
     "ctaButton": "Demo Planlayın",
     "ctaContact": "Veya bizi arayın"
   },
+  "solutions": {
+    "relatedProductsLabel": "İlgili Ürünler",
+    "relatedProductsTitle": "Bu Çözüm İçin Ürünler"
+  },
   "about": {
     "title": "Hakkımızda",
     "subtitle": "Argenit Akıllı Bilişim Teknolojileri",

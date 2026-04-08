@@ -5,6 +5,7 @@ import AkasHero from "@/components/solutions/akas/AkasHero";
 import AkasWorkflow from "@/components/solutions/akas/AkasWorkflow";
 import AkasFeatures from "@/components/solutions/akas/AkasFeatures";
 import AkasOverview from "@/components/solutions/akas/AkasOverview";
+import SolutionProducts from "@/components/solutions/SolutionProducts";
 
 export default async function AkasPage() {
   const t = await getTranslations();
@@ -15,6 +16,8 @@ export default async function AkasPage() {
       <AkasOverview />
       <AkasWorkflow />
       <AkasFeatures />
+
+      <SolutionProducts categorySlugs={["sitogenetik"]} accentColor="blue" />
 
       {/* ── CTA ── */}
       <section className="relative py-28 lg:py-36 bg-[#050a18] overflow-hidden">

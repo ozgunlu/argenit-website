@@ -5,6 +5,7 @@ import EasyPathHero from "@/components/solutions/easypath/EasyPathHero";
 import EasyPathOverview from "@/components/solutions/easypath/EasyPathOverview";
 import EasyPathWorkflow from "@/components/solutions/easypath/EasyPathWorkflow";
 import EasyPathFeatures from "@/components/solutions/easypath/EasyPathFeatures";
+import SolutionProducts from "@/components/solutions/SolutionProducts";
 
 export default async function EasyPathPage() {
   const t = await getTranslations();
@@ -15,6 +16,8 @@ export default async function EasyPathPage() {
       <EasyPathOverview />
       <EasyPathWorkflow />
       <EasyPathFeatures />
+
+      <SolutionProducts categorySlugs={["patoloji"]} accentColor="purple" />
 
       {/* ── CTA ── */}
       <section className="relative py-28 lg:py-36 bg-[#080514] overflow-hidden">

@@ -249,6 +249,10 @@
     "ctaButton": "Schedule a Demo",
     "ctaContact": "Or call us at"
   },
+  "solutions": {
+    "relatedProductsLabel": "Related Products",
+    "relatedProductsTitle": "Products for This Solution"
+  },
   "about": {
     "title": "About Us",
     "subtitle": "Argenit Smart Information Technologies",

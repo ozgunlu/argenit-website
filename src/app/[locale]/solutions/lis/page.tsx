@@ -5,6 +5,7 @@ import LisHero from "@/components/solutions/lis/LisHero";
 import LisOverview from "@/components/solutions/lis/LisOverview";
 import LisWorkflow from "@/components/solutions/lis/LisWorkflow";
 import LisFeatures from "@/components/solutions/lis/LisFeatures";
+import SolutionProducts from "@/components/solutions/SolutionProducts";
 
 export default async function LisPage() {
   const t = await getTranslations();
@@ -15,6 +16,8 @@ export default async function LisPage() {
       <LisOverview />
       <LisWorkflow />
       <LisFeatures />
+
+      <SolutionProducts categorySlugs={["sitogenetik", "patoloji"]} accentColor="amber" />
 
       {/* ── CTA ── */}
       <section className="relative py-28 lg:py-36 bg-[#0a0804] overflow-hidden">

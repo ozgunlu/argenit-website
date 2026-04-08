@@ -5,6 +5,7 @@ import EasyFishHero from "@/components/solutions/easyfish/EasyFishHero";
 import EasyFishOverview from "@/components/solutions/easyfish/EasyFishOverview";
 import EasyFishWorkflow from "@/components/solutions/easyfish/EasyFishWorkflow";
 import EasyFishFeatures from "@/components/solutions/easyfish/EasyFishFeatures";
+import SolutionProducts from "@/components/solutions/SolutionProducts";
 
 export default async function EasyFishPage() {
   const t = await getTranslations();
@@ -15,6 +16,8 @@ export default async function EasyFishPage() {
       <EasyFishOverview />
       <EasyFishWorkflow />
       <EasyFishFeatures />
+
+      <SolutionProducts categorySlugs={["sitogenetik"]} accentColor="emerald" />
 
       {/* ── CTA ── */}
       <section className="relative py-28 lg:py-36 bg-[#030812] overflow-hidden">
